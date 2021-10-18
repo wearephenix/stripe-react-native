@@ -182,7 +182,6 @@
     "example": "yarn --cwd example",
     "lint": "eslint \"**/*.{js,ts,tsx}\" --ignore-pattern \"docs/api-reference/*\"",
     "pods": "cd example && pod-install --quiet",
-    "prepare": "bob build",
     "release": "./scripts/publish",
     "run-example-android": "cd example;ENVFILE=.env.ci react-native run-android --variant=release",
     "run-example-ios": "cd example;ENVFILE=.env.ci react-native run-ios --configuration Release --simulator \"iPhone 12\"",
