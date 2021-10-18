@@ -28,6 +28,7 @@ class PaymentMethodCreateParamsFactory(
         PaymentMethod.Type.P24 -> createP24PaymentConfirmParams()
         PaymentMethod.Type.Fpx -> createFpxPaymentConfirmParams()
         PaymentMethod.Type.AfterpayClearpay -> createAfterpayClearpayPaymentConfirmParams()
+        PaymentMethod.Type.PayPal -> createPayPalPaymentConfirmParams()
         PaymentMethod.Type.AuBecsDebit -> createAuBecsDebitPaymentConfirmParams()
         else -> {
           throw Exception("This paymentMethodType is not supported yet")
@@ -346,6 +347,21 @@ class PaymentMethodCreateParamsFactory(
     }
 
     val params = PaymentMethodCreateParams.createAfterpayClearpay(billingDetails)
+
+    return ConfirmPaymentIntentParams
+      .createWithPaymentMethodCreateParams(
+        paymentMethodCreateParams = params,
+        clientSecret = clientSecret,
+      )
+  }
+  //lolol
+  @Throws(PaymentMethodCreateParamsException::class)
+  private fun createPaypalPaymentConfirmParams(): ConfirmPaymentIntentParams {
+    val billingDetails = billingDetailsParams?.let { it } ?: run {
+      throw PaymentMethodCreateParamsException("idk error payppal")
+    }
+
+    val params = PaymentMethodCreateParams.createPaypal(billingDetails)
 
     return ConfirmPaymentIntentParams
       .createWithPaymentMethodCreateParams(
