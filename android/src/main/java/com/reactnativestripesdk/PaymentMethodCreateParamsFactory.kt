@@ -356,16 +356,9 @@ class PaymentMethodCreateParamsFactory(
   }
 
   @Throws(PaymentMethodCreateParamsException::class)
-  private fun createPaypalPaymentConfirmParams(): ConfirmPaymentIntentParams {
-    val billingDetails = billingDetailsParams?.let { it } ?: run {
-      throw PaymentMethodCreateParamsException("You must provide billing details")
-    }
-
-    val params = PaymentMethodCreateParams.createPaypal(billingDetails)
-
+  private fun createPayPalPaymentConfirmParams(): ConfirmPaymentIntentParams {
     return ConfirmPaymentIntentParams
-      .createWithPaymentMethodCreateParams(
-        paymentMethodCreateParams = params,
+      .create(
         clientSecret = clientSecret,
       )
   }
