@@ -354,7 +354,7 @@ extension PaymentMethodError: LocalizedError {
         case .afterpayClearpayPaymentMissingParams:
             return NSLocalizedString("You must provide billing details", comment: "Create payment error")
         case .payPalPaymentMissingParams:
-            return NSLocalizedString("idk error payfpal", comment: "Create payment error")
+            return NSLocalizedString("You must provide billing details", comment: "Create payment error")
         case .paymentNotSupported:
             return NSLocalizedString("This payment type is not supported yet", comment: "Create payment error")
         case .cardPaymentOptionsMissingParams:
