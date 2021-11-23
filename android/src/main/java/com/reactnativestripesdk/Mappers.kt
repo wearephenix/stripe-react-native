@@ -445,9 +445,9 @@ internal fun mapToBillingDetails(billingDetails: ReadableMap?, cardAddress: Addr
 
   return PaymentMethod.BillingDetails.Builder()
     .setAddress(address.build())
-    .setName(getValOr(billingDetails, "name"))
-    .setPhone(getValOr(billingDetails, "phone"))
-    .setEmail(getValOr(billingDetails, "email"))
+    .setName(getValOr(billingDetails, "name", null))
+    .setPhone(getValOr(billingDetails, "phone", null))
+    .setEmail(getValOr(billingDetails, "email", null))
     .build()
 }
 
